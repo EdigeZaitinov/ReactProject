@@ -1,0 +1,19 @@
+.content_game_types {
+    margin-top: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5rem;
+}
+
+.game_type {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 8px;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQh3E4I0FoI6pnbqK8_wfU3GasMLZWU3LTwIQ&usqp=CAU");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
