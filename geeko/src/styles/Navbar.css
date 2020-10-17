@@ -16,7 +16,7 @@
 }
 
 .links {
-    flex: 1;
+    flex: 2;
     order: 2;
     display: flex;
     flex-direction: row;

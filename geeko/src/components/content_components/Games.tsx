@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import "../../styles/content_component_styles/Games.css";
+import { Link } from "react-router-dom";
 
-interface Props {}
+interface Props {
+
+}
+
 interface State {
   gamesList: any;
 }
@@ -33,14 +37,16 @@ export default class Games extends Component<Props, State> {
   render() {
     return (
       <div className="content_games">
-        {this.state.gamesList.map((item: any) => (
-          <div className="gameItem">
+        {this.state.gamesList.map((item: any,index:number) => (
+          <div className="gameItem" key={index}>
+            <Link to={'Games/'+item.fields.name}>
             <img
               className="gameImage"
               src={item.fields.link}
               alt={item.fields.name}
             />
             <h6 className="gameName">{item.fields.name}</h6>
+            </Link>
           </div>
         ))}
       </div>
