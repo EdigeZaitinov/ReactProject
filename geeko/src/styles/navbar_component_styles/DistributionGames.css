@@ -1,0 +1,13 @@
+.distributionGamesBody {
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.distributionGamesForm {
+    width: 30rem;
+    height: 40rem;
+    background-color: rosybrown;
+}

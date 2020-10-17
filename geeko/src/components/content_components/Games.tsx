@@ -45,7 +45,7 @@ export default class Games extends Component<Props, State> {
               src={item.fields.link}
               alt={item.fields.name}
             />
-            <h6 className="gameName">{item.fields.name}</h6>
+            <h6 className="gameName">{index}:{item.fields.name}</h6>
             </Link>
           </div>
         ))}

@@ -11,6 +11,9 @@ export default class Navbar extends Component {
           <Link className="link" to="/">
             Home
           </Link>
+          <Link className="link" to="/distributionGames">
+            DistributionGames
+          </Link>
           <Link className="link" to="/about_us">
             About us
           </Link>
