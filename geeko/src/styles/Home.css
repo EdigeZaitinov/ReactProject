@@ -1,0 +1,21 @@
+.homeBody {
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toGamesButton {
+    width: 15rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: 2px;
+    margin-top: 21rem;
+    background-image: url("https://million-wallpapers.ru/wallpapers/3/36/470573795770367/barokko-oboi-10.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    font-weight: bolder;
+    border-style: dotted;
+}

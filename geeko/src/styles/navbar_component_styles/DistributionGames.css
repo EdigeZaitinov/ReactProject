@@ -4,10 +4,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .distributionGamesForm {
-    width: 30rem;
-    height: 40rem;
-    background-color: rosybrown;
+    width: 26rem;
+    height: 20rem;
+    background-image: url("https://million-wallpapers.ru/wallpapers/3/36/470573795770367/barokko-oboi-10.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.distributionInput {
+    text-align: center;
+    color: white;
+}
+
+.distributionButton {
+    text-align: center;
+    margin-top: 4rem;
+    width: 10rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border-style: dotted;
+    font-weight: bolder;
 }

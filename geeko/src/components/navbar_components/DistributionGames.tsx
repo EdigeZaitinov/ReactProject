@@ -40,9 +40,9 @@ export default class DistributionGames extends Component<Props, State> {
     this.setState({ password: event.target.value });
   }
 
-componentWillMount(){
-    this.getGames()
-}
+  componentWillMount() {
+    this.getGames();
+  }
 
   getGames() {
     console.log("fetching.....");
@@ -53,7 +53,7 @@ componentWillMount(){
           games: responce,
         })
       );
-      console.log(this.state.games)
+    console.log(this.state.games);
   }
 
   addUser(event: any) {
@@ -71,16 +71,19 @@ componentWillMount(){
         <div className="distributionGamesBody">
           <form className="distributionGamesForm">
             <input
+              placeholder="Name"
               className="distributionInput"
               onChange={this.updateName}
               type="text"
             />
             <input
+              placeholder="Email"
               className="distributionInput"
               onChange={this.updateEmail}
               type="text"
             />
             <input
+              placeholder="Password"
               className="distributionInput"
               onChange={this.updatePassword}
               type="text"
