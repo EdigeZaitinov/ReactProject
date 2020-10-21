@@ -1,7 +1,20 @@
 import React, { Component, useContext } from "react";
 import "../../styles/content_component_styles/Games.css";
 import { Link } from "react-router-dom";
-import { GameContext } from "../Navbar";
+import GameTypes from "./GameTypes";
+
+export const Game = {
+  game: "",
+  toSearch: false,
+  setSearchGame(e: string, a: boolean) {
+    this.game = e;
+    this.toSearch = a;
+    alert(this.game);
+    alert(this.toSearch);
+  },
+};
+type GameState = typeof Game;
+export const GameContext = React.createContext(Game);
 
 interface Props {}
 
@@ -12,6 +25,7 @@ interface State {
 }
 
 export default class Games extends Component<Props, State> {
+  gameState: GameState = Game;
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -20,15 +34,18 @@ export default class Games extends Component<Props, State> {
       toSearch: false,
     };
     this.getGames = this.getGames.bind(this);
-    this.setSearchGame = this.setSearchGame.bind(this);
+    this.setSearchingGame = this.setSearchingGame.bind(this);
     this.getSearchingGame = this.getSearchingGame.bind(this);
   }
 
   componentWillMount() {
-      this.getGames();
+    this.getGames();
+    if(this.gameState.game!=""){
+      this.getSearchingGame();
+    }
   }
 
-  setSearchGame(e: string, a: boolean) {
+  setSearchingGame(e: string, a: boolean) {
     this.setState({ gameSearch: e });
     this.setState({ toSearch: a });
     if (this.state.gameSearch != "") {
@@ -56,29 +73,22 @@ export default class Games extends Component<Props, State> {
 
   render() {
     return (
-      <GameContext.Consumer>
-        {(gameContext) => (
-          <div
-            className="content_games"
-            onMouseOut={() =>
-              this.setSearchGame(gameContext.game, gameContext.toSearch)
-            }
-          >
-            {this.state.gamesList.map((item: any, index: number) => (
-              <div className="gameItem" key={index}>
-                <Link to={"Games/" + item.fields.name}>
-                  <img
-                    className="gameImage"
-                    src={item.fields.link}
-                    alt={item.fields.name}
-                  />
-                  <h6 className="gameName">{item.fields.name}</h6>
-                </Link>
-              </div>
-            ))}
-          </div>
-        )}
-      </GameContext.Consumer>
+      <GameContext.Provider value={this.gameState}>
+        <div className="content_games" onMouseOut={()=>this.setSearchingGame(this.gameState.game,this.gameState.toSearch)}>
+          {this.state.gamesList.map((item: any, index: number) => (
+            <div className="gameItem" key={index}>
+              <Link to={"Games/" + item.fields.name}>
+                <img
+                  className="gameImage"
+                  src={item.fields.link}
+                  alt={item.fields.name}
+                />
+                <h6 className="gameName">{item.fields.name}</h6>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </GameContext.Provider>
     );
   }
 }
