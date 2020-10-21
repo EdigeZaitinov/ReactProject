@@ -15,16 +15,42 @@
     margin-left: 5rem;
 }
 
-.links {
+.linksAndSearch {
     flex: 4;
+    display: flex;
+    flex-direction: column;
     order: 2;
+}
+
+.links {
+    order: 1;
     display: flex;
     flex-direction: row;
     padding-left: 10rem;
+    justify-content: space-around;
 }
 
 .link {
     margin-top: 2rem;
     margin-left: 5rem;
     color: white;
+}
+
+.search {
+    order: 1;
+    margin-top: 2rem;
+    width: 20rem;
+    margin-left: 45rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.searchInput {
+    color: white;
+}
+
+.searchButton {
+    width: 2rem;
+    height: 2rem;
+    margin-top: 1rem;
 }

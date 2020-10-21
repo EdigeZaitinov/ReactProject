@@ -17,4 +17,32 @@ code {
     background-image: url("https://media.playstation.com/is/image/SCEA/horizon-forbidden-west-desktop-02-wallpaper-04-en-18jun20?$native_nt$");
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    animation-name: animatehome;
+    animation-duration: 15s;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-play-state: running;
+}
+
+@keyframes animatehome {
+    0% {
+        background-image: url("https://media.playstation.com/is/image/SCEA/horizon-forbidden-west-desktop-02-wallpaper-04-en-18jun20?$native_nt$");
+    }
+    20% {
+        background-image: url("https://wallpapercave.com/wp/wp4368683.jpg");
+    }
+    40% {
+        background-image: url("https://gameranx.com/wp-content/uploads/2017/03/Gwent-The-Witcher-Card-Game-4K-Wallpaper.jpg");
+    }
+    60% {
+        background-image: url("https://wallpaperaccess.com/full/228227.jpg");
+    }
+    80% {
+        background-image: url("https://www.hdwallpapers.in/download/biomutant_2018_game_4k_8k-wide.jpg");
+    }
+    100% {
+        background-image: url("https://media.playstation.com/is/image/SCEA/horizon-forbidden-west-desktop-02-wallpaper-04-en-18jun20?$native_nt$");
+    }
 }

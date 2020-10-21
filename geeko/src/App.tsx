@@ -7,8 +7,8 @@ import Help from "./components/navbar_components/Help";
 import Contacts from "./components/navbar_components/Contacts";
 import Home from "./components/Home";
 import Game from "./components/content_components/Game";
-import DistributionGames from "./components/navbar_components/DistributionGames";
 import Content from "./components/Content";
+
 
 function App() {
   return (
@@ -20,7 +20,6 @@ function App() {
         <Route path="/help" component={Help} />
         <Route path="/contacts" component={Contacts} />
         <Route path="/Games/:gameName" component={Game}/>
-        <Route path="/distributionGames" component={DistributionGames}/>
         <Route path="/Games"component={Content}/>
       </Switch>
     </Router>

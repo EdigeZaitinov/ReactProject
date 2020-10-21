@@ -7,15 +7,15 @@
 }
 
 .gameItem {
-    width: 15rem;
-    height: 23rem;
+    width: 14rem;
+    height: 22rem;
     margin-top: 2rem;
-    background-color: rgba(0, 0, 0, 0.822);
+    background-color: black;
 }
 
 .gameImage {
-    width: 15rem;
-    height: 20rem;
+    width: 14rem;
+    height: 19rem;
 }
 
 .gameName {
