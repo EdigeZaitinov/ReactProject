@@ -1,8 +1,20 @@
+.Content {
+    display: flex;
+    flex-direction: column;
+}
+
+.content_body {
+    width: 100%;
+    height: 55rem;
+    display: flex;
+    flex-direction: row;
+}
+
 .content_games {
-    flex: 3;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    flex: 3;
     justify-content: space-around;
 }
 
@@ -23,4 +35,42 @@
     color: wheat;
     font-size: 1rem;
     font-weight: bolder;
+}
+
+.searchForm {
+    display: flex;
+    width: 20rem;
+    margin-left: 68rem;
+    justify-content: center;
+    margin-top: -4rem;
+}
+
+.searchInput {
+    text-align: center;
+    color: white;
+}
+
+.searchButton {
+    margin-top: 1rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.content_game_types {
+    margin-top: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.game_type {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 8px;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQh3E4I0FoI6pnbqK8_wfU3GasMLZWU3LTwIQ&usqp=CAU");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }

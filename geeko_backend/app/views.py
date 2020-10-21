@@ -20,9 +20,6 @@ def getGamesByCategory(request,category_id):
     data=serializers.serialize('json',games)
     return HttpResponse(data)
 
-# def addUser(request):
-#     print(request)
-
 def getGameByName(request,gameName):
     game=Games.objects.filter(name=gameName)[:1]
     data=serializers.serialize('json',game)
