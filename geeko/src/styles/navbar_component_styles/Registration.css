@@ -9,38 +9,31 @@
 
 .RegistrationForm {
     width: 30rem;
-    height: 20rem;
+    height: 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-image: url("https://million-wallpapers.ru/wallpapers/3/36/470573795770367/barokko-oboi-10.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.822);
+    border: 0.5rem;
+    border-color: rgba(124, 133, 94, 0.527);
+    border-style: solid;
     border-radius: 2rem;
 }
 
 .RegistrationInput {
-    width: 20rem;
-    height: 5rem;
-    text-align: center;
-    font-family: sans-serif;
-    font-weight: bolder;
-    color: black;
-}
-
-.RegistrationInput::-webkit-input-placeholder {
-    color: black;
+    font-weight: bold;
 }
 
 .RegistrationButton {
-    margin-top: 4rem;
+    height: 2.5rem;
+    margin-top: 1rem;
+    width: 10rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    border: 0.1rem;
+    background-color: rgba(255, 255, 255, 0);
+    border-style: solid;
+    border-color: white;
     border-radius: 1rem;
-    width: 15rem;
-    height: 3rem;
-    font-weight: bolder;
-    font-family: sans-serif;
-    color: black;
-    text-align: center;
-    background-color: rgba(124, 255, 205, 0.493);
 }
