@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { createRef } from "react";
 import "../../styles/navbar_component_styles/Registration.css";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
@@ -9,7 +10,7 @@ export const Registr = {
   cEmail: "",
   cPassword: "",
   canRegistrate: false,
-  alertText:"",
+  alertText: "",
   notBot(u: string, e: string, p: string, p1: string) {
     var checkbox: any = document.getElementById("notBot");
     if (checkbox.checked == true && p == p1 && p != "" && p1 != "") {
@@ -18,14 +19,14 @@ export const Registr = {
       this.cPassword = p;
       this.canRegistrate = true;
     } else if (checkbox.checked != true && p == p1) {
-      this.canRegistrate=false
-      this.alertText="please click checkbox"
+      this.canRegistrate = false;
+      this.alertText = "please click checkbox";
     } else if (checkbox.checked == true && p != p1) {
-      this.canRegistrate=false
-      this.alertText="two password fields are not same"
+      this.canRegistrate = false;
+      this.alertText = "two password fields are not same";
     } else if (checkbox.checked != true && p != p1) {
-      this.canRegistrate=false
-      this.alertText="please click checkbox and rewrite passwords"
+      this.canRegistrate = false;
+      this.alertText = "please click checkbox and rewrite passwords";
     }
   },
 };
@@ -35,9 +36,6 @@ export const RegContext = React.createContext(Registr);
 interface Props {}
 
 interface State {
-  username: string;
-  email: string;
-  password: string;
   users: Array<User>;
 }
 
@@ -46,9 +44,6 @@ export default class Registration extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      username: "",
-      email: "",
-      password: "",
       users: [],
     };
     this.registrateUser = this.registrateUser.bind(this);
@@ -58,23 +53,21 @@ export default class Registration extends Component<Props, State> {
     var checkbox: any = document.getElementById("notBot");
     if (this.regState.canRegistrate == true) {
       this.state.users.push(
-        new User(this.state.username, this.state.email, this.state.password)
+        new User(this.regState.cUsername, this.regState.cEmail, this.regState.cPassword)
       );
-      this.setState({ username: "" });
-      this.setState({ email: "" });
-      this.setState({ password: "" });
       this.regState.cUsername = "";
       this.regState.cEmail = "";
       this.regState.cPassword = "";
-      this.regState.canRegistrate=false;
-      console.log(this.state.users)
-    }
-    else if(this.regState.canRegistrate==false && checkbox.checked==false){
-      alert("please click checkbox")
-    }
-    else if(this.regState.canRegistrate==false){
-      alert(this.regState.alertText)
-      checkbox.checked=false
+      this.regState.canRegistrate = false;
+      console.log(this.state.users);
+    } else if (
+      this.regState.canRegistrate == false &&
+      checkbox.checked == false
+    ) {
+      alert("please click checkbox");
+    } else if (this.regState.canRegistrate == false) {
+      alert(this.regState.alertText);
+      checkbox.checked = false;
     }
   }
 
