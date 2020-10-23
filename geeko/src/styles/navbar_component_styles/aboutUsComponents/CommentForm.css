@@ -1,0 +1,51 @@
+.commentForm {
+    background-color: rgba(0, 0, 0, 0.822);
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 0.2rem;
+    border-style: dashed;
+    border-color: white;
+    border-radius: 2rem;
+}
+
+.commentInputDiv {
+    width: 24rem;
+}
+
+.commentInputUsername {
+    color: white;
+    text-align: center;
+}
+
+.commentRaitingDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.commentRaitingDiv1 {
+    width: 2rem;
+}
+
+.commentRaitingInput {
+    color: white;
+}
+
+.raitingSpan {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    color: white;
+}
+
+.checkboxSpan {}
+
+.checkboxLabel {
+    margin-top: 1rem;
+}
+
+.commentTextarea {
+    width: 24rem;
+    color: white;
+}

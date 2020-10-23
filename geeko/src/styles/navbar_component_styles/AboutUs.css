@@ -9,6 +9,27 @@
     justify-content: space-between;
 }
 
+.comments {
+    width: 60rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    height: 20rem;
+    border-radius: 3rem;
+    background-color: turquoise;
+}
+
+.addCommentButton {
+    width: auto;
+    height: 2rem;
+    margin-left: 45rem;
+    margin-top: -7rem;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    border: 0.1rem;
+    border-style: solid;
+    border-color: white;
+}
+
 .container .box {
     position: relative;
     width: 350px;
