@@ -7,7 +7,7 @@
     border: 0.2rem;
     border-style: dashed;
     border-color: white;
-    border-radius: 2rem;
+    border-radius: 2rem 0 0 2rem;
 }
 
 .commentInputDiv {
@@ -19,30 +19,8 @@
     text-align: center;
 }
 
-.commentRaitingDiv {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.commentRaitingDiv1 {
-    width: 2rem;
-}
-
-.commentRaitingInput {
-    color: white;
-}
-
-.raitingSpan {
-    margin-top: 2rem;
-    margin-left: 1rem;
-    color: white;
-}
-
-.checkboxSpan {}
-
 .checkboxLabel {
-    margin-top: 1rem;
+    margin-top: 0rem;
 }
 
 .commentTextarea {

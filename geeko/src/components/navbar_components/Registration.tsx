@@ -1,3 +1,4 @@
+import Axios from "axios";
 import React, { Component } from "react";
 import { createRef } from "react";
 import "../../styles/navbar_component_styles/Registration.css";
@@ -9,6 +10,7 @@ export const Registr = {
   cUsername: "",
   cEmail: "",
   cPassword: "",
+  сPassword1: "",
   canRegistrate: false,
   alertText: "",
   notBot(u: string, e: string, p: string, p1: string) {
@@ -17,6 +19,7 @@ export const Registr = {
       this.cUsername = u;
       this.cEmail = e;
       this.cPassword = p;
+      this.сPassword1 = p1;
       this.canRegistrate = true;
     } else if (checkbox.checked != true && p == p1) {
       this.canRegistrate = false;
@@ -30,6 +33,7 @@ export const Registr = {
     }
   },
 };
+
 export type RegState = typeof Registr;
 export const RegContext = React.createContext(Registr);
 
@@ -47,19 +51,49 @@ export default class Registration extends Component<Props, State> {
       users: [],
     };
     this.registrateUser = this.registrateUser.bind(this);
+    this.getUsers = this.getUsers.bind(this);
   }
 
-  registrateUser() {
+  componentWillMount() {
+    this.getUsers();
+  }
+
+  getUsers() {
+    Axios.get("http://127.0.0.1:8000/app/Users").then((response) => {
+      this.setState({
+        users: response.data,
+      });
+    });
+  }
+
+  async registrateUser() {
     var checkbox: any = document.getElementById("notBot");
     if (this.regState.canRegistrate == true) {
+      var name = this.regState.cUsername;
+      var email = this.regState.cEmail;
+      var password = this.regState.cPassword;
+      const json = JSON.stringify({
+        name: name,
+        email: email,
+        password: password,
+      });
+      const res = await Axios.post("http://127.0.0.1:8000/app/Users", json, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       this.state.users.push(
-        new User(this.regState.cUsername, this.regState.cEmail, this.regState.cPassword)
+        new User(
+          this.regState.cUsername,
+          this.regState.cEmail,
+          this.regState.cPassword
+        )
       );
+      alert("Вы зарегестрировались");
       this.regState.cUsername = "";
       this.regState.cEmail = "";
       this.regState.cPassword = "";
       this.regState.canRegistrate = false;
-      console.log(this.state.users);
     } else if (
       this.regState.canRegistrate == false &&
       checkbox.checked == false

@@ -4,6 +4,8 @@ import { RouteComponentProps } from "react-router";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import "../../styles/content_component_styles/Game.css";
+import Distributionofgames from "./DistributionOfGames";
+import Axios from "axios";
 
 type RouteParams = {
   gameName: string;
@@ -20,13 +22,13 @@ export default class Game extends Component<RouteComponentProps<RouteParams>> {
   }
 
   getGame() {
-    fetch("http://127.0.0.1:8000/app/Games/" + this.state.gameName1 + "/")
-      .then((response) => response.json())
-      .then((response) =>
-        this.setState({
-          game: response,
-        })
-      );
+    Axios.get(
+      "http://127.0.0.1:8000/app/Games/" + this.state.gameName1 + "/"
+    ).then((response) => {
+      this.setState({
+        game: response.data,
+      });
+    });
     console.log(this.state.game);
   }
 
@@ -47,6 +49,7 @@ export default class Game extends Component<RouteComponentProps<RouteParams>> {
             </div>
           </div>
         ))}
+        <Distributionofgames />
         <Footer />
       </div>
     );

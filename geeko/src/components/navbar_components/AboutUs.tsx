@@ -1,3 +1,4 @@
+import Axios from "axios";
 import React, { Component } from "react";
 import "../../styles/navbar_component_styles/AboutUs.css";
 import Footer from "../Footer";
@@ -7,15 +8,13 @@ import CommentForm from "./aboutUsComponents/CommentForm";
 export const CComment = {
   cUsername: "",
   cText: "",
-  cRaiting: "",
-  notBot(u: string, t: string, r: string) {
+  notBot(u: string, t: string) {
     var checkbox: HTMLInputElement = document.getElementById(
       "commentCheckbox"
     ) as HTMLInputElement;
     if (checkbox.checked == true) {
       this.cUsername = u;
       this.cText = t;
-      this.cRaiting = r;
     }
   },
 };
@@ -26,6 +25,7 @@ interface Props {}
 
 interface State {
   comments: Array<Comment>;
+  userPk: number;
 }
 
 export default class AboutUs extends Component<Props, State> {
@@ -35,27 +35,49 @@ export default class AboutUs extends Component<Props, State> {
 
     this.state = {
       comments: [],
+      userPk: 0,
     };
     this.addComment = this.addComment.bind(this);
   }
 
   componentWillMount() {
-    this.state.comments.push(
-      new Comment("Damir Bulegenov", "the best site I'v ever seen", "5")
-    );
-    console.log(this.state.comments);
+    this.state.comments.push(new Comment('Baurzhan','that is the best site I have ever seen'))
   }
 
-  addComment() {
+  async addComment() {
     var checkbox: HTMLInputElement = document.getElementById(
       "commentCheckbox"
     ) as HTMLInputElement;
     if (checkbox.checked == false) {
       alert("Click checkbox");
     } else {
-      var joined = this.state.comments.concat(new Comment(this.comState.cUsername,this.comState.cText,this.comState.cRaiting));
+      Axios.get(
+        "http://127.0.0.1:8000/app/Users/" + this.comState.cUsername
+      ).then((response) => {
+        this.setState({
+          userPk: response.data[0]["pk"],
+        });
+      });
+      const json = JSON.stringify({
+        comment: this.comState.cText,
+        userComments: this.state.userPk,
+      });
+      const res = await Axios.post("http://127.0.0.1:8000/app/Comments", json, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      alert(res.data);
+      var joined = this.state.comments.concat(
+        new Comment(this.comState.cUsername, this.comState.cText)
+      );
       this.setState({ comments: joined });
-      alert("Your comment was added");
+      this.comState.cUsername = "";
+      this.comState.cText = "";
+      this.setState({
+        userPk: 0,
+      });
+      checkbox.checked = false;
     }
   }
 
@@ -85,33 +107,21 @@ export default class AboutUs extends Component<Props, State> {
                 </p>
               </div>
             </div>
-            <div className="box">
-              <div className="icon">N1</div>
-              <div className="content">
-                <h3>NUMER ONE</h3>
-                <p>
-                  Our team guarantees you that all our games are checked for
-                  viruses, because we try to be like you: always be{" "}
-                  <b>NUMBER ONE</b>!
-                </p>
+            <div className="commentSection">
+              <CommentForm />
+              <button className="addCommentButton" onClick={this.addComment}>
+                Add comment
+              </button>
+              <div className="comments">
+                {this.state.comments.map((item: Comment, index: number) => (
+                  <p className="userComment" key={index}>
+                    <span className="userCommentName">
+                      {item.commentUsername}
+                    </span>
+                    <span className="userCommentText">{item.commentText}</span>
+                  </p>
+                ))}
               </div>
-            </div>
-            <CommentForm />
-            <button className="addCommentButton" onClick={this.addComment}>
-              Add comment
-            </button>
-            <div className="comments">
-              {this.state.comments.map((item: Comment, index: number) => (
-                <p className="userComment" key={index}>
-                  <span className="userCommentName">
-                    {item.commentUsername}
-                  </span>
-                  {item.commentText}
-                  <span className="userCommentRaiting">
-                    {item.commentRaiting}
-                  </span>
-                </p>
-              ))}
             </div>
           </div>
           <Footer />
@@ -124,14 +134,19 @@ export default class AboutUs extends Component<Props, State> {
 class Comment {
   commentUsername: string;
   commentText: string;
-  commentRaiting: string;
-  constructor(
-    commentUsername: string,
-    commentText: string,
-    commentRaiting: string
-  ) {
+  constructor(commentUsername: string, commentText: string) {
     this.commentUsername = commentUsername;
     this.commentText = commentText;
-    this.commentRaiting = commentRaiting;
+  }
+}
+
+class User {
+  username: string;
+  password: string;
+  email: string;
+  constructor(username: string, email: string, password: string) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
   }
 }

@@ -6,5 +6,9 @@ urlpatterns=[
     path('Games',views.getGames,name='Games'),
     path('GameCategories/<int:category_id>/',views.getGamesByCategory,name='GamesByCategory'),
     # path('UsersPost/',views.addUser,name='addUser')
-    path('Games/<str:gameName>/',views.getGameByName,name='GameByName')
+    path('Games/<str:gameName>/',views.getGameByName,name='GameByName'),
+    path('Users',views.getUsers,name='Users'),
+    path('Users/<str:userName>',views.getUserByName,name="UserByName"),
+    path('Users/UserByID/<int:userID>',views.getUserByID,name="UserByID"),
+    path('Comments',views.comments,name="Comments")
 ]

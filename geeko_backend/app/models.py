@@ -11,5 +11,10 @@ class Games(models.Model):
     category=models.ForeignKey(GamesCategory,on_delete=models.CASCADE)
 
 class Users(models.Model):
+    name=models.CharField(max_length=30)
     email=models.CharField(max_length=30)
     password=models.CharField(max_length=30)
+
+class Comments(models.Model):
+    comment=models.CharField(max_length=1000)
+    userComments=models.ForeignKey(Users,on_delete=models.CASCADE)

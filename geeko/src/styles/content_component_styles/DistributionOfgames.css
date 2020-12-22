@@ -1,0 +1,15 @@
+.distributionofgames {
+    width: 20rem;
+    background-color: rgba(0, 0, 0, 0.822);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2rem;
+    margin-left: 50rem;
+    margin-bottom: 15rem;
+    margin-top: -10rem;
+}
+
+.han {
+    color: white;
+}
